@@ -101,10 +101,6 @@ app.get('/news-by-id/:id', (req, res) => {
     res.send(newsDetail);
 })
 
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/client/index.html');
-})
-
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
 })
