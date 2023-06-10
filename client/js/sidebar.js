@@ -2,7 +2,7 @@ async function getData() {
     const listCatElement = $("#list-cat");
     try {
 
-        var listCat = await axios.get('http://localhost:3000/categories');
+        var listCat = await axios.get('http://localhost:3000/category');
 
         listCat = listCat.data;
 

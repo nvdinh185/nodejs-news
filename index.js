@@ -4,7 +4,7 @@ const port = 3000;
 
 app.use(express.static(__dirname + '/client'));
 
-const news = [
+const listNews = [
     {
         id: "1",
         description: "Trung Quốc điều thêm 17 tàu đến khu vực giàn khoan",
@@ -38,10 +38,10 @@ const news = [
 ]
 
 app.get('/news', (req, res) => {
-    res.send(news);
+    res.send(listNews);
 })
 
-const categories = [
+const listCats = [
     {
         "id": "1",
         "name": "Thời sự"
@@ -60,15 +60,15 @@ const categories = [
     }
 ]
 
-app.get('/categories', (req, res) => {
-    res.send(categories);
+app.get('/category', (req, res) => {
+    res.send(listCats);
 })
 
 app.get('/news-by-cat', (req, res) => {
     var cId = req.query.cid;
 
-    var listNewsByCat = news.filter(function (st) {
-        return st.catId === cId;
+    var listNewsByCat = listNews.filter(function (news) {
+        return news.catId === cId;
     })
     res.send(listNewsByCat);
 })
@@ -76,29 +76,29 @@ app.get('/news-by-cat', (req, res) => {
 app.get('/news-by-id', (req, res) => {
     var id = req.query.id;
 
-    var newsDetail = news.find(function (tin) {
-        return tin.id === id;
+    var newsById = listNews.find(function (news) {
+        return news.id === id;
     })
-    res.send(newsDetail);
+    res.send(newsById);
 })
 
 app.get('/cat-by-id', (req, res) => {
     var id = req.query.id;
 
-    var catDetail = categories.find(function (cat) {
+    var catById = listCats.find(function (cat) {
         return cat.id === id;
     })
-    res.send(catDetail);
+    res.send(catById);
 })
 
 // get by params
 app.get('/news-by-id/:id', (req, res) => {
     var id = req.params.id;
 
-    var newsDetail = news.find(function (st) {
-        return st.id === id;
+    var newsById = listNews.find(function (news) {
+        return news.id === id;
     })
-    res.send(newsDetail);
+    res.send(newsById);
 })
 
 app.listen(port, () => {
