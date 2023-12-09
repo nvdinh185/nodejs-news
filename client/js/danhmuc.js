@@ -18,21 +18,20 @@ async function getData() {
         listNewsByCat.forEach(function (news) {
             const liElement = $('<li></li>');
             liElement.html(`
-            <h2>
-                <a href="chitiet.html?did=${news.id}" title="">${news.description}</a>
-            </h2>
-            <div class="item">
-                <p>${news.detail}</p>
-                <div class="clr"></div>
-            </div>
-        `);
+                <h2>
+                    <a href="chitiet.html?did=${news.id}" title="">${news.description}</a>
+                </h2>
+                <div class="item">
+                    <p>${news.detail}</p>
+                    <div class="clr"></div>
+                </div>
+            `);
 
             ulElement.append(liElement);
 
         })
 
         var catById = await axios.get(`http://localhost:3000/cat-by-id?id=${cId}`);
-
         catById = catById.data;
 
         var catName = catById.name;
